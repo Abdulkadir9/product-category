@@ -1,0 +1,31 @@
+<%= "Kategori Listesi" %>
+<br/>
+<br/>
+<table>
+    <tr>
+        <th>Kategori</th>
+        <th>Yok Et</th>
+        <th>Değiştir</th>
+    </tr>
+    <% @categories.each do |c| %>
+        <tr>
+            <td>
+                <%= link_to c.name, category_path(c) %>
+            </td>
+    
+            <td> 
+            <%= link_to category_path(c.id), method: :delete, data:{:confirm => "Silcen mi?"}  do %> 
+                <i class="fa-regular fa-circle-xmark"></i>
+                <% end %>
+            </td>
+            <td> <%= link_to edit_category_path(c.id) do %>
+                <i class="fa-regular fa-pen-to-square"></i>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>
+  
+<br/>
+<br/>
+<%= link_to "Ekle", new_category_path %>

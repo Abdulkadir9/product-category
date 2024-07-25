@@ -1,0 +1,25 @@
+<%= simple_form_for @product, url: products_path, html: { class: 'form' }, method: :post do |f| %>
+  <div class="inps-div">
+    <%= f.label :Ürün, class: 'lbl' %>
+    <%= f.text_field :name, class: 'inp' %>
+  </div>
+  <div class="inps-div">
+    <%= f.label :Açıklama, class: 'lbl' %>
+    <%= f.text_area :description, class: 'inp' %>
+  </div>
+  <div class="inps-div">
+    <%= f.label :Adet, class: 'lbl' %>
+    <%= f.number_field :quantity, class: 'inp' %>
+  </div>
+  <div class="inps-div">
+    <%= f.label :Fiyat, class: 'lbl' %>
+    <%= f.number_field :price, step: 0.01, class: 'inp' %>
+  </div>
+  <div class="inps-div">
+    <%= f.label :Kategori, class: 'lbl' %>
+    <%= f.collection_select :category_id, @categories, :id, :name, { prompt: 'Kategori Seçiniz' }, { class: 'inp' } %>
+  </div>
+  <div class="inps-div">
+    <%= f.button :submit, "Ekle", class: 'inp' %>
+  </div>
+<% end %>

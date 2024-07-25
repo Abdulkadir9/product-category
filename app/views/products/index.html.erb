@@ -1,0 +1,44 @@
+<%= "Ürün Listesi" %>
+<br/>
+<br/>
+Kategoriye Göre Filtrele:
+<br/>
+<%= form_tag(products_path, method: "get") do %>
+    <%= label_tag(:category_id, "Kategori:") %>
+    <%= select_tag(:category_id, options_for_select([["Hepsi", ""], *Category.all.map { |c| [c.name, c.id] }])) %>
+    <%= submit_tag("Filtrele") %>
+  <% end %>
+<br/>
+<table>
+    <tr>
+        <th>Ürün</th>
+        <th>Açıklama</th>
+        <th>Adet</th>
+        <th>Fiyat</th>
+        <th>Kategori</th>
+        <th>Yok Et</th>
+        <th>Değiştir</th>
+    </tr>
+    <% @products.each do |p| %>
+        <tr>
+            <td> <%= link_to p.name, product_path(p)%> </td>
+            <td> <%= p.description%> </td>
+            <td> <%= p.quantity%> </td>
+            <td> <%= number_to_currency(p.price, unit:'₺', precision:2,) %> </td>
+            <td><%= p.category.name %></td>
+            <td> 
+            <%= link_to product_path(p.id), method: :delete, data:{:confirm => "Silcen mi?"}  do %> 
+                <i class="fa-regular fa-circle-xmark"></i>
+                <% end %>
+            </td>
+            <td> <%= link_to edit_product_path(p.id) do %>
+                <i class="fa-regular fa-pen-to-square"></i>
+                <% end %>
+            </td>
+        </tr>
+    <% end %>
+</table>
+  
+<br/>
+<br/>
+<%= link_to "Ekle", new_product_path %>

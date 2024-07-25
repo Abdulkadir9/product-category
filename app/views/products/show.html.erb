@@ -1,0 +1,8 @@
+Ürün Detayları
+<div style="display:flex; flex-direction:column; align-items:center">
+<h2 style="text-align:center"> <%=@product.name%> </h2>
+<p> <strong><%=@product.category.name%> Kategorisinde</strong> </p>
+<p> <%=@product.description%> </p>
+<p> <%=@product.quantity%> Adet</p>
+<p> <%= number_to_currency(@product.price, unit:'₺', precision:2,) %> </p>
+</div>

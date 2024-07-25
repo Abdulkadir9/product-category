@@ -1,0 +1,10 @@
+<%= simple_form_for @category, url: category_path, html:{class:'form'}, remote: true, validate: true do |f| %>
+    <div class="inps-div">
+      <%= f.label :'Kategori:', class:'lbl' %>
+      <%= f.text_field :name, class:'inp' %>
+    </div>
+    <div class="inps-div">
+    <%= f.button :submit, "Değiştir" , class:'inp'%>
+    </div>
+<% end %>
+  

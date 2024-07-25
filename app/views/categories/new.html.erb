@@ -1,0 +1,10 @@
+<%= simple_form_for @category, url: categories_path, html:{class:'form'}, method: :post do |f| %>
+    <div class="inps-div">
+      <%= f.label :'Kategori:', class:'lbl' %>
+      <%= f.text_field :name, class:'inp' %>
+    </div>
+    <div class="inps-div">
+    <%= f.button :submit, "Ekle" , class:'inp'%>
+    </div>
+<% end %>
+  
